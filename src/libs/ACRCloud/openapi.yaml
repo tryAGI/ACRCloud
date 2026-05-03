@@ -1,0 +1,153 @@
+openapi: 3.0.3
+info:
+  title: ACRCloud Identification API
+  version: 1.0.0
+  description: |
+    Locally maintained OpenAPI description for the ACRCloud Identification API
+    documented at https://docs.acrcloud.com/reference/identification-api/identification-api.
+servers:
+  - url: https://identify-eu-west-1.acrcloud.com
+    description: Example ACRCloud identify host. Pass your project host as the client base URI.
+tags:
+  - name: Identification
+    description: Identify audio files or fingerprint files.
+paths:
+  /v1/identify:
+    post:
+      operationId: identify
+      tags:
+        - Identification
+      summary: Identify audio or fingerprint
+      description: |
+        Identifies an audio file or fingerprint file. ACRCloud requires HMAC-SHA1
+        request signing over method, path, access key, data type, signature version,
+        and timestamp.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/IdentifyRequest'
+      responses:
+        '200':
+          description: Identification response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentifyResponse'
+components:
+  schemas:
+    IdentifyRequest:
+      type: object
+      required:
+        - sample
+        - access_key
+        - sample_bytes
+        - timestamp
+        - signature
+        - data_type
+        - signature_version
+      properties:
+        sample:
+          type: string
+          format: binary
+          description: Audio file or fingerprint file.
+        access_key:
+          type: string
+          description: Project access key.
+        sample_bytes:
+          type: integer
+          format: int64
+          description: File size in bytes. ACRCloud recommends short clips and documents a maximum below 5 MB.
+        timestamp:
+          type: string
+          description: Unix timestamp used in the request signature.
+        signature:
+          type: string
+          description: Base64-encoded HMAC-SHA1 signature.
+        data_type:
+          type: string
+          description: audio or fingerprint.
+        signature_version:
+          type: string
+          description: Signature protocol version. Use 1.
+    IdentifyResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        result_type:
+          type: integer
+        cost_time:
+          type: number
+          format: double
+      additionalProperties: true
+    Status:
+      type: object
+      properties:
+        msg:
+          type: string
+        code:
+          type: integer
+        version:
+          type: string
+      additionalProperties: true
+    Metadata:
+      type: object
+      properties:
+        timestamp_utc:
+          type: string
+        music:
+          type: array
+          items:
+            $ref: '#/components/schemas/MusicMetadata'
+      additionalProperties: true
+    MusicMetadata:
+      type: object
+      properties:
+        acrid:
+          type: string
+        title:
+          type: string
+        album:
+          $ref: '#/components/schemas/LocalizedName'
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedName'
+        release_date:
+          type: string
+        duration_ms:
+          type: integer
+        score:
+          type: integer
+        external_ids:
+          type: object
+          additionalProperties: true
+        external_metadata:
+          type: object
+          additionalProperties: true
+        play_offset_ms:
+          type: integer
+        db_begin_time_offset_ms:
+          type: integer
+        db_end_time_offset_ms:
+          type: integer
+        sample_begin_time_offset_ms:
+          type: integer
+        sample_end_time_offset_ms:
+          type: integer
+      additionalProperties: true
+    LocalizedName:
+      type: object
+      properties:
+        name:
+          type: string
+        langs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: true

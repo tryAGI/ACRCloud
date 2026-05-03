@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Nuget">
+    <Description>C# SDK for the ACRCloud API -- signed audio and fingerprint identification requests.</Description>
+    <PackageTags>ACRCloud;music-recognition;audio-fingerprinting;audio;identification;ai;sdk;dotnet;openapi</PackageTags>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>
