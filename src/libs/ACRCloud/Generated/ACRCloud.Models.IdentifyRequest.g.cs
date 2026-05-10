@@ -126,5 +126,6 @@ namespace ACRCloud
         public IdentifyRequest()
         {
         }
+
     }
 }

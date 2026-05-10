@@ -48,5 +48,6 @@ namespace ACRCloud
         public LocalizedName()
         {
         }
+
     }
 }
