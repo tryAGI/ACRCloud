@@ -4,18 +4,18 @@
 namespace ACRCloud
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Metadata
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timestamp_utc")]
         public string? TimestampUtc { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("music")]
         public global::System.Collections.Generic.IList<global::ACRCloud.MusicMetadata>? Music { get; set; }

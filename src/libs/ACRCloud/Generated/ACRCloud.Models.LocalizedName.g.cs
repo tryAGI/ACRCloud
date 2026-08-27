@@ -4,18 +4,18 @@
 namespace ACRCloud
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class LocalizedName
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("langs")]
         public global::System.Collections.Generic.IList<object>? Langs { get; set; }

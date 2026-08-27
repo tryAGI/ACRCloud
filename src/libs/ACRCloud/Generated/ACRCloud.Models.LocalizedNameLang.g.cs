@@ -4,7 +4,7 @@
 namespace ACRCloud
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class LocalizedNameLang
     {
