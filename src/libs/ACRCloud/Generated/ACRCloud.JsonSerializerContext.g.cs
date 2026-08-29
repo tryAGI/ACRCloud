@@ -16,6 +16,7 @@ namespace ACRCloud
             typeof(global::ACRCloud.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::ACRCloud.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::ACRCloud.IdentifyRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
@@ -33,7 +34,6 @@ namespace ACRCloud
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::ACRCloud.MusicMetadata>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::ACRCloud.LocalizedName>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
